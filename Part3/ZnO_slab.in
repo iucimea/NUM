@@ -1,0 +1,53 @@
+&CONTROL
+        calculation = 'relax',
+        title = 'ZnO slab',
+        restart_mode = 'from_scratch',
+        iprint = 10,
+        prefix = 'ZnO',
+        pseudo_dir = './',
+        outdir = './',
+        tstress = .TRUE.,
+        tprnfor = .TRUE.,
+        forc_conv_thr=1e-4,
+        etot_conv_thr=1e-5,
+/
+
+&SYSTEM
+        ibrav = 4,             ! hexagonal
+        celldm(1) = 6.202,     ! Bohr units
+        celldm(3) = 6.450,     ! adimensional (4*c)/a
+        nat = 8,
+        ntyp = 2,
+        ecutwfc = 60,          ! cutoff Rydberg units
+        ecutrho = 480,
+        nbnd = 40,              ! (number of electrons)/2 + something
+        occupations = 'smearing',
+        smearing = 'gauss',
+/
+
+&ELECTRONS
+     mixing_mode = 'plain',
+     mixing_beta = 0.75,
+     conv_thr =  1.0d-9,
+/
+
+&IONS
+     ion_dynamics='bfgs',
+/
+
+ ATOMIC_SPECIES
+        Zn 30   Zn.pbe-van.UPF
+        O  16   O.pbe-rrkjus.UPF
+
+ ATOMIC_POSITIONS (crystal)
+O        1/3   -1/3   0     
+Zn       1/3   -1/3   0.095 
+O        2/3    1/3   0.125  
+Zn       2/3    1/3   0.220   
+O        1/3   -1/3   0.250    
+Zn       1/3   -1/3   0.345 
+O        2/3    1/3   0.375  
+Zn       2/3    1/3   0.470   
+
+K_POINTS automatic
+4 4 1 0 0 0

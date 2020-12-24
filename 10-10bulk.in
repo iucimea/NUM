@@ -1,0 +1,61 @@
+       
+
+
+&CONTROL
+        calculation = 'vc-relax',
+        title = 'bulk 10-10'
+        restart_mode = 'from_scratch',
+        iprint = 10,
+        prefix = 'ZnO',
+        pseudo_dir = '/home/fabio/Results/ZnO'
+        outdir = '/home/fabio/Results/ZnO/Bulk'
+        tstress = .TRUE.,
+        tprnfor = .TRUE.,
+/
+
+&SYSTEM
+       ibrav = 8,
+       celldm(1) =  6.206 ,
+       celldm(2) =  1.6126 ,
+       celldm(3) =  1.7320 ,
+       nat = 8,
+       ntyp = 2,
+       ecutwfc = 50,
+       ecutrho = 400,
+       nbnd = 40,
+       occupations = 'smearing',
+       smearing = 'gauss'
+       degauss = 0.02
+/
+
+&ELECTRONS
+        mixing_mode = 'plain',
+        mixing_beta = 0.7,
+        conv_thr = 1.0D-11,
+/
+
+&IONS
+        ion_dynamics = 'bfgs'
+/
+
+&CELL
+        cell_dynamics = 'bfgs'
+        press_conv_thr = 1
+/
+
+ATOMIC_SPECIES
+O    16  O.pbe-rrkjus.UPF
+Zn   30  Zn.pbe-van.UPF
+
+ATOMIC_POSITIONS (crystal)
+O        0.500000000   0.000062619   0.166667094
+Zn       0.500000000   0.379837627   0.166666271
+O        0.000000000   0.500062609   0.333332830
+Zn       0.000000000   0.879837306   0.333334525
+O        0.000000000   0.000062612   0.666667078
+Zn       0.000000000   0.379837278   0.666665711
+O        0.500000000   0.500062611   0.833332848
+Zn       0.500000000   0.879837339   0.833333643
+
+K_POINTS automatic
+6 4 4  0 0 0
